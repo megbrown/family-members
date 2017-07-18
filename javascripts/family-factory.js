@@ -66,3 +66,20 @@ module.exports.saveEditedFamily = (familyObj, familyId) => {
     }
   });
 };
+
+module.exports.deleteFamily = (familyId) => {
+  return new Promise( (resolve, reject) => {
+    if (familyId) {
+      $.ajax({
+        url: `${fbURL}/family/${familyId}.json`,
+        type: "DELETE"
+      }).done( (familyData) => {
+        resolve(familyData);
+      }).fail( (err) => {
+        reject(err);
+      });
+    } else {
+      console.log("Your family ID is not good");
+    }
+  });
+};

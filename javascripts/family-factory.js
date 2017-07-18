@@ -24,3 +24,26 @@ module.exports.getFamily = () => {
     });
   });
 };
+
+module.exports.getFamilyId = (familyId) => {
+  return new Promise( ( resolve, reject) => {
+    $.ajax({
+      url: `${fbURL}/family/${familyId}.json`
+    }).done ( (familyData) => {
+      resolve(familyData);
+    });
+  });
+};
+
+module.exports.addFamily = (familyFormObj) => {
+  return new Promise( (resolve, reject) => {
+    $.ajax({
+      url: `${fbURL}/family.json`,
+      type: "POST",
+      data: JSON.stringify(familyFormObj),
+      dataType: "json"
+    }).done( (familyId) => {
+      resolve(familyId);
+    });
+  });
+};

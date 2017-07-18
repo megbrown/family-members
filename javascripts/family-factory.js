@@ -25,7 +25,7 @@ module.exports.getFamily = () => {
   });
 };
 
-module.exports.getFamilyId = (familyId) => {
+module.exports.getFamilyById = (familyId) => {
   return new Promise( ( resolve, reject) => {
     $.ajax({
       url: `${fbURL}/family/${familyId}.json`
@@ -45,5 +45,24 @@ module.exports.addFamily = (familyFormObj) => {
     }).done( (familyId) => {
       resolve(familyId);
     });
+  });
+};
+
+module.exports.saveEditedFamily = (familyObj, familyId) => {
+  return new Promise( (resolve, reject) => {
+    if (familyId) {
+      $.ajax({
+        url: `${fbURL}/family/${familyId}.json`,
+        type: "PUT",
+        data: JSON.stringify(familyObj),
+        dataType: "json"
+      }).done( (familyData) => {
+        resolve(familyData);
+      }).fail( (err) => {
+        reject(err);
+      });
+    } else {
+      console.log("Your family ID is not good");
+    }
   });
 };

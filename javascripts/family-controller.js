@@ -31,11 +31,33 @@ function buildFamilyObj() {
 }
 
 $(document).on("click", ".save_new_btn", function() {
-		console.log("save btn clicked");
-		let familyObj = buildFamilyObj();
-		db.addFamily(familyObj)
-		.then( (familyId) => {
-			console.log("family saved", familyId);
-			module.exports.loadFamilyToDom();
-		});
+	console.log("save btn clicked");
+	let familyObj = buildFamilyObj();
+	db.addFamily(familyObj)
+	.then( (familyId) => {
+		console.log("family saved", familyId);
+		module.exports.loadFamilyToDom();
 	});
+});
+
+$(document).on("click", ".edit-btn", function() {
+	console.log("edit btn clicked");
+	let familyId = $(this).data("edit-id");
+	db.getFamilyById(familyId)
+	.then( (family) => {
+		family.id = familyId;
+		let editForm = templates.buildFamilyForm(family);
+		$container.html(editForm);
+	});
+});
+
+$(document).on("click", ".save_edit_btn", function() {
+	console.log("saving edited family");
+	let familyObj = buildFamilyObj();
+	let familyId = $(this).attr("id");
+	db.saveEditedFamily(familyObj, familyId)
+	.then( (data) => {
+		console.log("family updated", data);
+		module.exports.loadFamilyToDom();
+	});
+});

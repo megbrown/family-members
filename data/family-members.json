@@ -1,0 +1,37 @@
+{
+  "family": [
+    {
+      "name": "Annie Brown",
+      "age": 29,
+      "gender": "female",
+      "skills": [
+        "burping",
+        "farting",
+        "inappropriate shouting",
+        "tantrums"
+      ]
+    },
+    {
+      "name": "Saylor Riddle",
+      "age": 2,
+      "gender": "male",
+      "skills": [
+        "burping",
+        "farting",
+        "inappropriate shouting",
+        "tantrums"
+      ]
+    },
+    {
+      "name": "Lela Brown",
+      "age": 64,
+      "gender": "female",
+      "skills": [
+        "burping",
+        "farting",
+        "inappropriate shouting",
+        "tantrums"
+      ]
+    }
+  ]
+}

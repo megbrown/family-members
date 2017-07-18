@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    {{#each family}}
+    <div class="family-list col-sm-4">
+      <h2>{{name}}</h2>
+      <h3>{{gender}}, age {{age}}</h3>
+      <h4>Skills</h4>
+      {{#each skills}}
+        <p>{{this}}</p>
+      {{/each}}
+    <a href="#" data-edit-id="{{id}}" class="edit-btn">edit</a>
+    <a href="#" data-delete-id="{{id}}" class="delete-btn">delete</a>
+    </div>
+    {{/each}}
+  </div>
+</div>
